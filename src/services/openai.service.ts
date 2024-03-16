@@ -49,7 +49,7 @@ async function AddMessage(message: IMessage, chatId: string) {
 }
 
 async function removeTokensFromUser(userId: string, count: number) {
-    await post(`/v1/user/${userId}/bills`, { count });
+    await post(`/v1/user/${userId}/charge`, { count });
 }
 
 export default function getOpenaiService(): IOpenaiService {
@@ -81,6 +81,7 @@ export default function getOpenaiService(): IOpenaiService {
         
         await PromiseScheduler([
           AddMessage(resp.message, payload.chatId),
+          removeTokensFromUser(payload.userId, cost)
         ]);
 
         return {
