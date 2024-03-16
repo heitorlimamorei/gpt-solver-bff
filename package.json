@@ -21,6 +21,7 @@
     "openai": "^4.29.1"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.17",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.4.2"
   }
